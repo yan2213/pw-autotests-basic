@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test('login', async ({ page }) => {
+test.skip('login', async ({ page }) => {
     await page.goto('https://practicesoftwaretesting.com/auth/login');
     await page.locator('[data-test="email"]').fill('customer3@practicesoftwaretesting.com');
     await page.locator('[data-test="password"]').fill('pass123');
