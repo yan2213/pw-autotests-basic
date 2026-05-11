@@ -1,1 +1,1 @@
-# pw-autotests
+Playwright - basic
