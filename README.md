@@ -29,29 +29,38 @@ npx playwright install
 
 Run all tests:
 ```bash
-npx playwright test
+npm test
 ```
 
 Run in headed mode:
+
 ```bash
 npx playwright test --headed
 ```
+Run in UI mode:
+
+```bash
+npm run ui-mode
+```
 
 Run specific file:
+
 ```bash
 npx playwright test tests/login.spec.ts
-```
+```bash
 
 Run in specific browser:
+
 ```bash
 npx playwright test --project=chromium
-```
+```bash
 
 ## 📊 Test Report
 
 ```bash
-npx playwright show-report
+npm run report
 ```
+
 
 ## 🧪 Test Cases
 

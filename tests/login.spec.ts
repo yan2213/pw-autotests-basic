@@ -2,9 +2,9 @@ import { test, expect } from '@playwright/test';
 
 test.skip('login', async ({ page }) => {
     await page.goto('/auth/login');
-    await page.locator('[data-test="email"]').fill('customer3@practicesoftwaretesting.com');
-    await page.locator('[data-test="password"]').fill('pass123');
-    await page.locator('[data-test="login-submit"]').click();
+    await page.getByTestId('email').fill('customer3@practicesoftwaretesting.com');
+    await page.getByTestId('password').fill('pass123');
+    await page.getByTestId('login-submit').click();
   
     // Expect an URL "to contain" a substring.
     await expect(page).toHaveURL('/account');
