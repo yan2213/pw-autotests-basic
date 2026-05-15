@@ -1,0 +1,27 @@
+{
+  "name": "pw-autotests-basic",
+  "version": "1.0.0",
+  "description": "Playwright - basic",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "ui-mode": "npx playwright test --ui",
+    "report": "npx playwright show-report"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yan2213/pw-autotests-basic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/yan2213/pw-autotests-basic/issues"
+  },
+  "homepage": "https://github.com/yan2213/pw-autotests-basic#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0"
+  }
+}
