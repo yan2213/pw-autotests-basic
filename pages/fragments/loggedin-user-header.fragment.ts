@@ -4,6 +4,6 @@ export class AuthenticatedHeaderFragment {
     navMenu: Locator;
 
     constructor(page: Page) {
-        this.navMenu = page.locator('[data-test="nav-menu"]');
+        this.navMenu = page.getByTestId("nav-menu");
     }
 }

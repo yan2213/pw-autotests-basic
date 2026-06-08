@@ -11,6 +11,6 @@ export class HomePage {
     }
   
     async navigateHome(): Promise<void> {
-      await this.page.goto('https://practicesoftwaretesting.com/');
+      await this.page.goto('/');
     }
   }
