@@ -2,11 +2,9 @@ import { Page } from '@playwright/test';
 import { HeaderFragment } from './fragments/header.fragment';
 
 export class HomePage {
-    page: Page;
     header: HeaderFragment;
   
-    constructor(page: Page) {
-      this.page = page;
+    constructor(public page: Page) {
       this.header = new HeaderFragment(page);
     }
   
