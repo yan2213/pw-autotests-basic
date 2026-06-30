@@ -35,19 +35,35 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+    { name: 'auth', testMatch: /auth.login\.spec\.ts/ },
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        storageState: 'playwright/.auth/user.json',
+         ...devices['Desktop Chrome']  
+        },
+      dependencies: ['auth'],
+      testIgnore: /auth.login\.spec\.ts/
     },
 
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      use: {
+        storageState: 'playwright/.auth/user.json',
+         ...devices['Desktop Firefox'] 
+        },
+        dependencies: ['auth'],
+        testIgnore: /auth.login\.spec\.ts/
     },
 
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: { 
+        storageState: 'playwright/.auth/user.json',
+        ...devices['Desktop Safari'] 
+      },
+      dependencies: ['auth'],
+      testIgnore: /auth.login\.spec\.ts/
     },
 
     /* Test against mobile viewports. */
