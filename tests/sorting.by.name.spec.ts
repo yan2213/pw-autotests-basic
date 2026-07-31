@@ -17,7 +17,5 @@ import { HomePage } from '../pages/home.page';
     ? [...names].sort() 
     : [...names].sort().reverse();
   expect(names).toEqual(sorted);
-
-
-  });
+    });
 });

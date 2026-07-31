@@ -5,13 +5,14 @@ import { ProductPage } from '../pages/product.page';
 test('adding-product-to-cart', async ({ page }) => {
     const homePage = new HomePage(page);
     const productPage = new ProductPage(page);
+    const itemName = 'Slip Joint Pliers'
 
     await homePage.navigateHome();
 
     //Click on the product "Slip Joint Pliers".
-    await page.getByText('Slip Joint Pliers').click();
+    await page.getByText(itemName).click();
     await expect(page).toHaveURL(/product/);
-    await expect(productPage.productName).toHaveText('Slip Joint Pliers');
+    await expect(productPage.productName).toHaveText(itemName);
     await expect(productPage.unitPrice).toHaveText('9.17');
 
     //Click "Add to Cart" button.
@@ -24,8 +25,6 @@ test('adding-product-to-cart', async ({ page }) => {
     await page.getByTestId('nav-cart').click();
     await expect(page).toHaveURL(/checkout/);
     await expect(page.getByTestId('product-quantity')).toHaveValue('1');
-    await expect(page.getByTestId('product-title')).toHaveText('Slip Joint Pliers');
+    await expect(page.getByTestId('product-title')).toHaveText(itemName);
     await expect(page.getByTestId('proceed-1')).toBeVisible();
-
-
 });

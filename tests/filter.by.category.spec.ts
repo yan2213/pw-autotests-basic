@@ -1,22 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/home.page';
-
-
-enum Category {
-    HandTools = 'Hand Tools',
-    PowerTools = 'Power Tools',
-    Other = 'Other'
-  }
-
+import { PowerTools } from '../interfaces/interfaces.home.page';
 
   test('filter-by-category', async ({ page }) => {
     const homePage = new HomePage(page);
     await homePage.navigateHome();
 
-    await page.getByLabel('Sander').click();
-    await page.waitForTimeout(1000);
+    await page.getByLabel(PowerTools.Sander).click();
+    await expect(page.getByTestId('product-name').first()).toContainText(PowerTools.Sander);
     const titles = await page.getByTestId('product-name').allTextContents();
-    const allContainSander = titles.every(title => title.includes('Sander'));
+    const allContainSander = titles.every(title => title.includes(PowerTools.Sander));
     expect(allContainSander).toBe(true);
 
   });
