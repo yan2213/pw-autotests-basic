@@ -6,9 +6,9 @@ import { PowerTools } from '../interfaces/interfaces.home.page';
     const homePage = new HomePage(page);
     await homePage.navigateHome();
 
-    await page.getByLabel(PowerTools.Sander).click();
-    await expect(page.getByTestId('product-name').first()).toContainText(PowerTools.Sander);
-    const titles = await page.getByTestId('product-name').allTextContents();
+    await homePage.clickOnCategory(PowerTools.Sander);
+    await expect(homePage.productTitles.first()).toContainText(PowerTools.Sander);
+    const titles = await homePage.productTitles.allTextContents();
     const allContainSander = titles.every(title => title.includes(PowerTools.Sander));
     expect(allContainSander).toBe(true);
 

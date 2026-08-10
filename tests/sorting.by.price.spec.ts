@@ -1,6 +1,11 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/home.page';
 
+function getSortedPrices(priceNumbers: number[], sortValue: string) : number[]{ 
+return sortValue === 'price,asc'
+  ? [...priceNumbers].sort((a, b) => a - b)
+  : [...priceNumbers].sort((a, b) => b - a);
+};
 [
     { sortValue: 'price,desc'},
     { sortValue: 'price,asc'},
@@ -9,11 +14,10 @@ import { HomePage } from '../pages/home.page';
     const homePage = new HomePage(page);
     await homePage.navigateHome();
 
-    const prices = await page.getByTestId('product-price').allTextContents();
+    await homePage.sortProducts(sortValue);
+    const prices = await homePage.productPrices.allTextContents();
     const priceNumbers = prices.map(p => parseFloat(p.replace('$', '')));
-    const sorted = sortValue === 'price,asc'
-  ? [...priceNumbers].sort((a, b) => a - b)
-  : [...priceNumbers].sort((a, b) => b - a);
+    const sorted = getSortedPrices(priceNumbers, sortValue);
   expect(priceNumbers).toEqual(sorted);
   });
 });

@@ -1,6 +1,12 @@
 import { test, expect } from '@playwright/test';
 import { HomePage } from '../pages/home.page';
 
+
+function getSortedNames(names: string[], sortValue: string) : string[]{ 
+return sortValue === 'name,asc'
+ ? [...names].sort() 
+: [...names].sort().reverse();
+};
 [
     { sortValue: 'name,asc'},
     { sortValue: 'name,desc'},
@@ -9,13 +15,11 @@ import { HomePage } from '../pages/home.page';
     const homePage = new HomePage(page);
     await homePage.navigateHome();
 
-    await page.getByTestId('sort').selectOption(sortValue);
+
+    await homePage.sortProducts(sortValue);
     // eslint-disable-next-line playwright/prefer-web-first-assertions
-    const names = await page.getByTestId('product-name').allTextContents();
-    // eslint-disable-next-line playwright/no-conditional-in-test
-    const sorted = sortValue === 'name,asc' 
-    ? [...names].sort() 
-    : [...names].sort().reverse();
-  expect(names).toEqual(sorted);
+    const names = await homePage.productTitles.allTextContents();
+    const sorted = getSortedNames(names, sortValue);
+    expect(names).toEqual(sorted);
     });
 });
