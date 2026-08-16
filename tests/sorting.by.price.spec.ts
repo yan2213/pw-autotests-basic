@@ -15,8 +15,7 @@ return sortValue === 'price,asc'
     await homePage.navigateHome();
 
     await homePage.sortProducts(sortValue);
-    const prices = await homePage.productPrices.allTextContents();
-    const priceNumbers = prices.map(p => parseFloat(p.replace('$', '')));
+    const priceNumbers = await homePage.getProductPrices();
     const sorted = getSortedPrices(priceNumbers, sortValue);
   expect(priceNumbers).toEqual(sorted);
   });

@@ -27,5 +27,11 @@ export class HomePage {
 
      async sortProducts(sortValue: string): Promise<void>{
       await this.page.getByTestId('sort').selectOption(sortValue);
+     };
+
+     async getProductPrices(): Promise<number[]>{
+      const prices = await this.productPrices.allTextContents();
+      const priceNumbers = prices.map(p => parseFloat(p.replace('$', '')));
+      return priceNumbers;
      }
   }

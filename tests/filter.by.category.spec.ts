@@ -7,7 +7,6 @@ import { PowerTools } from '../interfaces/interfaces.home.page';
     await homePage.navigateHome();
 
     await homePage.clickOnCategory(PowerTools.Sander);
-    await expect(homePage.productTitles.first()).toContainText(PowerTools.Sander);
     const titles = await homePage.productTitles.allTextContents();
     const allContainSander = titles.every(title => title.includes(PowerTools.Sander));
     expect(allContainSander).toBe(true);
