@@ -28,3 +28,11 @@ export enum Other{
     SafetyGear = 'Safety Gear',
     Fasteners = 'Fasteners'
 };
+
+export enum SortOptions{
+    NameAsc = 'name,asc',
+    NameDesc = 'name,desc',
+    PriceAsc = 'price,asc',
+    PriceDesc = 'price,desc'
+
+};
